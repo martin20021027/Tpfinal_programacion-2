@@ -3,7 +3,7 @@ CREATE TABLE `cliente` (
   `nombre_apellido` varchar(50) NOT NULL,
   `numero_reserva` int NOT NULL,
   PRIMARY KEY (`ID_cliente`)
-) 
+);
 
 CREATE TABLE `reserva` (
   `ID_reserva` int NOT NULL AUTO_INCREMENT,
@@ -12,7 +12,7 @@ CREATE TABLE `reserva` (
   `numero_mesa` int NOT NULL,
   `numero_reserva` int NOT NULL,
   PRIMARY KEY (`ID_reserva`) USING BTREE
-) 
+);
 
 CREATE TABLE  `usuarios` (
   `ID_usuario` int NOT NULL AUTO_INCREMENT,
@@ -21,3 +21,4 @@ CREATE TABLE  `usuarios` (
   `password` varchar(50) NOT NULL,
   PRIMARY KEY (`ID_usuario`)
 ) 
+
