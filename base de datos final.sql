@@ -16,9 +16,11 @@ CREATE TABLE `reserva` (
 
 CREATE TABLE  `usuarios` (
   `ID_usuario` int NOT NULL AUTO_INCREMENT,
-  `nombre_apellido` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `passw` varchar(50) NOT NULL,
   PRIMARY KEY (`ID_usuario`)
 ) 
+
 
