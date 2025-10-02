@@ -1,0 +1,5 @@
+﻿1- Ponerle CSS a login, signup, login inicio. ---
+2- Preparar la pagina de inicio (iniciar sesión o registrarse) TOMAS
+3- Poner el historial de reserva (mesas libres, ocupadas y su capacidad) - MARTIN
+4- Funcion de liberar una mesa ocupada y eliminar una reserva - MARTIN
+5 - Especificar en el documento requerimientos funcionales TOMAS
