@@ -5,7 +5,7 @@ require_once "base_datos.php";
 if (isset($_GET['id'])) {
     $idMesa = intval($_GET['id']);
     if (liberarMesa($idMesa)) {
-        header("Location: inicio.html?msg=Mesa liberada correctamente");
+        header("Location: inicio.php?msg=Mesa liberada correctamente");
         exit;
     } else {
         echo "❌ Error al liberar la mesa.";
