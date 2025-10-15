@@ -1,5 +1,4 @@
 <?php
-
 require_once "base_datos.php";
 
 // Obtener todas las mesas
@@ -85,11 +84,14 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
             </div>
         </div>
     </div>
+    <br>
+    <form action='logout.php'>
+        <input type='submit' value='logout'></input>
+    </form>
 </body>
 </html>
-
-
   
  
 
    
+
