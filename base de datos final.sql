@@ -2,6 +2,7 @@ CREATE TABLE `cliente` (
   `ID_cliente` int NOT NULL AUTO_INCREMENT,
   `nombre_apellido` varchar(50) NOT NULL,
   `numero_reserva` int NOT NULL,
+  `numero_mesa` int,
   PRIMARY KEY (`ID_cliente`)
 );
 
@@ -22,6 +23,7 @@ CREATE TABLE  `usuarios` (
   `pass` varchar(255) NOT NULL,
   PRIMARY KEY (`ID_usuario`)
 ) 
+
 
 
 
