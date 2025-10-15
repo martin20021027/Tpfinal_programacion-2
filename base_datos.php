@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <p><strong>Número de reserva:</strong> $numeroReserva</p>
                         <p><strong>Número de mesa:</strong> $numeroMesa</p>
                         <br>
-                        <form action='index.php'>
+                        <form action='inicio.php'>
                             <button type='submit' 
                                     style='padding:10px 20px; background:#007bff; 
                                            color:white; border:none; border-radius:5px; 
@@ -114,5 +114,6 @@ function liberarMesa($idMesa) {
     return $ok;
 }
 ?>
+
 
 
