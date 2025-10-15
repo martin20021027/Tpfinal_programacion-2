@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (password_verify($password, $usuario["pass"])) {
             $_SESSION["usuario"] = $usuario["nombre"];
-            header("Location: inicio.html");
+            header("Location: inicio.php");
         } else {
             echo "❌ Contraseña incorrecta.";
         }
@@ -31,3 +31,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="password" name="pass" placeholder="Contraseña" required><br>
     <button type="submit">Iniciar sesión</button>
 </form>
+
