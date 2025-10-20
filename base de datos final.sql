@@ -22,7 +22,7 @@ CREATE TABLE  `usuarios` (
   `email` varchar(50) NOT NULL,
   `pass` varchar(255) NOT NULL,
   PRIMARY KEY (`ID_usuario`)
-) 
+);
 
 INSERT INTO reserva (estado_mesa, capacidad_mesa, numero_mesa, numero_reserva)
 VALUES
@@ -53,6 +53,7 @@ VALUES
 ('Paula', 'Castro', 'paula.castro@restaurante.com', 'hashed_pass_def'),
 ('Ricardo', 'Vega', 'ricardo.vega@restaurante.com', 'hashed_pass_ghi'),
 ('Natalia', 'Suárez', 'natalia.suarez@restaurante.com', 'hashed_pass_jkl');
+
 
 
 
