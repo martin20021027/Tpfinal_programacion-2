@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     style='padding:10px 20px; background:#007bff; 
                                            color:white; border:none; border-radius:5px; 
                                            cursor:pointer; font-size:16px;'>
-                                Volver al Menú Principal
+                                Reserva Confirmada
                             </button>
                         </form>
                     </div>
@@ -114,6 +114,7 @@ function liberarMesa($idMesa) {
     return $ok;
 }
 ?>
+
 
 
 
