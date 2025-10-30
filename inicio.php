@@ -85,8 +85,8 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
         </div>
     </div>
     <br>
-    <form action='logout.php'>
-        <input type='submit' value='logout'></input>
+    <form action='index.php'>
+        <input type='submit' value='Cerrar Sesión'></input>
     </form>
 </body>
 </html>
@@ -94,4 +94,5 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
  
 
    
+
 
