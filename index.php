@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante - Inicio</title>
     <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
-            background: #b38300da;
+            background-image: url('Imagenes/foto2.jpg');   
+            background-size: cover;       
+            background-position: center; 
+            background-repeat: no-repeat;
             margin: 0;
             height: 100vh;
             display: flex;
@@ -55,3 +58,4 @@
     </div>
 </body>
 </html>
+
