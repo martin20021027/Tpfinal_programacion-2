@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante - Inicio</title>
     <style>
-       body {
+        
+        body {
             font-family: Arial, sans-serif;
             background-image: url('Imagenes/foto2.jpg');   
             background-size: cover;       
@@ -17,6 +18,7 @@
             justify-content: center;
             align-items: center;
         }
+
         .container {
             text-align: center;
             background: #fff;
@@ -34,7 +36,7 @@
             padding: 12px 25px;
             font-size: 16px;
             text-decoration: none;
-            color: #fff;
+            color: #000000ff;
             background: #007BFF;
             border-radius: 8px;
             transition: 0.3s;
@@ -51,10 +53,11 @@
     </style>
 </head>
 <body>
+    
     <div class="container">
-        <h1>🍴 Bienvenido</h1>
-        <a href="login.php" class="btn">Iniciar Sesión</a>
-        <a href="signup.php" class="btn btn-secondary">Registrarse</a>
+        <h1>🍴 Bienvenido </h1>
+        <a href="login.php" class="btn"> Iniciar Sesión </a>
+        <a href="signup.php" class="btn btn-secondary"> Registrarse </a>
     </div>
 </body>
 </html>
