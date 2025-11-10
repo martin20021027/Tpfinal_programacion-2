@@ -86,13 +86,14 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
     </div>
     <br>
     <form action='index.php'>
-        <input type='submit' value='Cerrar Sesión'></input>
+        <input type='submit' value='Cerrar Secion'></input>
     </form>
+
+
+    <div  class ="CrearMesa">
+        
+
+
+    </div>
 </body>
 </html>
-  
- 
-
-   
-
-
