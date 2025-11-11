@@ -1,6 +1,4 @@
 1- Poner foto 2 en index.php, poner foto 1 en login y signup - MARTIN
 2- Ponerle CSS a login, signup, login inicio. - MARTIN
-3- Acomodar posición de botòn cerrar sesión. - TOMÁS
-4- Ordenar los archivos en carpetas. - TOMÁS
 
 
