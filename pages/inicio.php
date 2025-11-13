@@ -89,7 +89,7 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
                 <button type="submit">Reservar</button>
             </form>
             <br>
-            <form action="../sesion/logout.php" method="post">
+            <form action="../public/index.php" method="post">
                 <button type="submit">Cerrar Sesión</button>
             </form>
         </div>
@@ -149,3 +149,4 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
     </script>
 </body>
 </html>
+
