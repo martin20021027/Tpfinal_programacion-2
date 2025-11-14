@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . "/../config/conexion.php";
 
+// Variable para guardar el mensaje y mostrarlo dentro del cuadro
+$mensaje = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
@@ -12,9 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssss", $nombre, $apellido, $email, $password);
 
     if ($stmt->execute()) {
-        echo "<p style='color: green; text-align:center;'>✅ Usuario registrado correctamente. <a href=\"login.php\">Inicia sesión</a></p>";
+        $mensaje = "<p style='color: green; font-size:14px;'>✅ Usuario registrado correctamente. 
+                    <a href='login.php'>Inicia sesión</a></p>";
     } else {
-        echo "<p style='color: red; text-align:center;'>❌ Error: " . $conn->error . "</p>";
+        $mensaje = "<p style='color: red; font-size:14px;'>❌ Error: " . $conn->error . "</p>";
     }
 }
 ?>
@@ -41,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         /* Cuadro del formulario */
         form {
-            background-color: white; /* Cuadro blanco */
+            background-color: white;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(0,0,0,0.3);
@@ -73,17 +77,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         button:hover {
             background-color: #0056b3;
         }
+
     </style>
 </head>
 <body>
-    <!-- Formulario centrado -->
+
     <form method="POST">
         <h2>Registrarse</h2>
+
         <input type="text" name="nombre" placeholder="Nombre" required><br>
         <input type="text" name="apellido" placeholder="Apellido" required><br>
         <input type="email" name="email" placeholder="Email" required><br>
         <input type="password" name="pass" placeholder="Contraseña" required><br>
         <button type="submit">Registrarse</button>
+
+         <!-- Mensaje dentro del cuadro -->
+         <?= $mensaje ?>
+         
     </form>
+
 </body>
 </html>
