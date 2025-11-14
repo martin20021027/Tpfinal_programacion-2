@@ -31,10 +31,10 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
         .card { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
         h2 { margin-top: 0; }
 
-        /* Contenedor de mesas en rejilla de 3 columnas */
+        /* Contenedor de mesas en rejilla */
         .mesas-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
         }
 
@@ -89,6 +89,7 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
                 <button type="submit">Reservar</button>
             </form>
             <br>
+            
             <form action="../public/index.php" method="post">
                 <button type="submit">Cerrar Sesión</button>
             </form>
@@ -106,11 +107,19 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
                 <div class="mesa <?= $row['estado_mesa']; ?>">
                     <p><b>Mesa <?= $row['numero_mesa']; ?></b></p>
                     <p><?= ucfirst($row['estado_mesa']); ?></p>
+
+                    <?php if ($row['estado_mesa'] == 'ocupada'): ?>
+                        <p><b>Reserva Nº:</b> <?= $row['numero_reserva']; ?></p>
+                    <?php endif; ?>
+
                     <p><?= $row['capacidad_mesa']; ?> personas</p>
+
                     <?php if ($row['estado_mesa'] == 'ocupada'): ?>
                         <a class="btn-liberar" href="../actions/liberar_mesa.php?id=<?= $row['numero_mesa']; ?>">Liberar</a>
+
                     <?php elseif ($row['estado_mesa'] == 'libre'): ?>
-                        <a class="btn-borrar" href="../actions/borrar_mesa.php?id=<?= $row['numero_mesa']; ?>" onclick="return confirm('¿Estás seguro de que deseas borrar esta mesa?');">Borrar</a>
+                        <a class="btn-borrar" href="../actions/borrar_mesa.php?id=<?= $row['numero_mesa']; ?>" 
+                           onclick="return confirm('¿Estás seguro de que deseas borrar esta mesa?');">Borrar</a>
                     <?php endif; ?>
                 </div>
             <?php endwhile; ?>
@@ -131,10 +140,6 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
         </div>
     </div>
     <br>
-        
-
-
-    </div>
 
     <script>
     // Intento de mitigar volver atrás: empuja estado y evita retroceso básico
@@ -144,9 +149,10 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
             history.pushState(null, null, location.href);
         });
     } catch (e) {
-        // algunos navegadores o contextos pueden lanzar, ignorar
     }
     </script>
 </body>
 </html>
+
+
 
