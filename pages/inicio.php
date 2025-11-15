@@ -18,8 +18,8 @@ require_once __DIR__ . "/../config/base_datos.php";
 
 // Obtener todas las mesas
 $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,7 +34,7 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
         /* Contenedor de mesas en rejilla */
         .mesas-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
         }
 
@@ -45,8 +45,11 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
             text-align: center;
             font-size: 14px;
         }
+
         .libre { background: #4caf50; color: white; }
+
         .ocupada { background: #f44336; color: white; }
+
         .btn-liberar {
             margin-top: 6px;
             display: inline-block;
@@ -77,6 +80,7 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
 <body>
     <div class="container">
       
+        <!-- Este div es el formulario de reservas --> 
         <div class="card">
             <h2>Ingresar Reserva</h2>
             <form method="post" action="../config/base_datos.php" style="margin-top:15px;">
@@ -90,33 +94,39 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
             </form>
             <br>
             
-            <form action="../public/index.php" method="post">
+             <!-- Esto es del boton para cerrar sesion  -->
+            <form action="../sesion/logout.php" method="post">
                 <button type="submit">Cerrar Sesión</button>
             </form>
         </div>
 
-        
+        <!-- Este div es del Estado de la mesa  --> 
         <div class="card">
+         <!-- El msg se genera del login.php ya que es redirigido por un header.  -->
             <h2>Estado de Mesas</h2>
+            <!--El $_GET se asegura que se alla entrado por inicio de secion  -->
             <?php if (isset($_GET['msg'])): ?>
                 <p class="msg"><?= htmlspecialchars($_GET['msg']); ?></p>
             <?php endif; ?>
 
             <div class="mesas-grid">
+            <!-- Este while es para mostrar el estado de la mesa -->
             <?php while ($row = $result->fetch_assoc()): ?>
                 <div class="mesa <?= $row['estado_mesa']; ?>">
                     <p><b>Mesa <?= $row['numero_mesa']; ?></b></p>
                     <p><?= ucfirst($row['estado_mesa']); ?></p>
 
+            <!--Este if muestra el numero de la reserva -->
                     <?php if ($row['estado_mesa'] == 'ocupada'): ?>
                         <p><b>Reserva Nº:</b> <?= $row['numero_reserva']; ?></p>
                     <?php endif; ?>
 
                     <p><?= $row['capacidad_mesa']; ?> personas</p>
-
+             <!-- Este if muestra el estado de la mesa si esta ocupada -->
                     <?php if ($row['estado_mesa'] == 'ocupada'): ?>
                         <a class="btn-liberar" href="../actions/liberar_mesa.php?id=<?= $row['numero_mesa']; ?>">Liberar</a>
 
+            <!-- Este elseif te muestra la opcion de borrar la mesa. -->      
                     <?php elseif ($row['estado_mesa'] == 'libre'): ?>
                         <a class="btn-borrar" href="../actions/borrar_mesa.php?id=<?= $row['numero_mesa']; ?>" 
                            onclick="return confirm('¿Estás seguro de que deseas borrar esta mesa?');">Borrar</a>
@@ -125,6 +135,7 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
             <?php endwhile; ?>
             </div>
 
+             <!-- Este div es para agregar crear una mesa con una capacidad en especifico -->
             <div style="margin-top: 20px; padding: 15px; background: #f9f9f9; border-radius: 8px; border: 1px solid #ddd;">
                 <h3 style="margin-top: 0;">Agregar Nueva Mesa</h3>
                 <form method="post" action="../actions/agregar_mesa.php">
@@ -142,6 +153,7 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
     <br>
 
     <script>
+    // Este try evita que el navegador pueda retroseder a los datos anteriores.
     // Intento de mitigar volver atrás: empuja estado y evita retroceso básico
     try {
         history.pushState(null, null, location.href);
@@ -153,6 +165,3 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
     </script>
 </body>
 </html>
-
-
-
