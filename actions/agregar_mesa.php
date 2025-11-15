@@ -15,13 +15,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validar que los datos no estén vacíos
     if (!$numero_mesa || !$capacidad_mesa) {
-        header('Location: ../pages/inicio.php?msg=❌ Debes completar todos los campos.');
+        header('Location: ../pages/inicio.php?msg= Debes completar todos los campos.');
         exit;
     }
 
     // Validar que sean números
     if (!is_numeric($numero_mesa) || !is_numeric($capacidad_mesa)) {
-        header('Location: ../pages/inicio.php?msg=❌ El número de mesa y capacidad deben ser números.');
+        header('Location: ../pages/inicio.php?msg= El número de mesa y capacidad deben ser números.');
         exit;
     }
 
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $resultCheck = $stmtCheck->get_result();
 
     if ($resultCheck->num_rows > 0) {
-        header('Location: ../pages/inicio.php?msg=❌ La mesa número ' . $numero_mesa . ' ya existe.');
+        header('Location: ../pages/inicio.php?msg= La mesa número ' . $numero_mesa . ' ya existe.');
         exit;
     }
 
@@ -47,10 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ii", $capacidad_mesa, $numero_mesa);
 
     if ($stmt->execute()) {
-        header('Location: ../pages/inicio.php?msg=✅ Mesa número ' . $numero_mesa . ' agregada exitosamente.');
+        header('Location: ../pages/inicio.php?msg= Mesa número ' . $numero_mesa . ' agregada exitosamente.');
         exit;
     } else {
-        header('Location: ../pages/inicio.php?msg=❌ Error al agregar la mesa: ' . $stmt->error);
+        header('Location: ../pages/inicio.php?msg= Error al agregar la mesa: ' . $stmt->error);
         exit;
     }
 
