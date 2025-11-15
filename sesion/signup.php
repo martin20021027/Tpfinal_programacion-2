@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . "/../config/conexion.php";
 
-// Variable para guardar el mensaje y mostrarlo dentro del cuadro
+// Variable en donde se guarda el mensaje para mostrar despues.
 $mensaje = "";
 
+// Este if es para crear un usuario y guardarlo en la base de datos.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
@@ -14,11 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssss", $nombre, $apellido, $email, $password);
 
+// Este if es para ejecutar la consulta y te dice si se ingreso correctamente o no.
     if ($stmt->execute()) {
-        $mensaje = "<p style='color: green; font-size:14px;'>✅ Usuario registrado correctamente. 
-                    <a href='login.php'>Inicia sesión</a></p>";
+        $mensaje = "<p style='color: green; font-size:14px;'>Usuario registrado correctamente. <a href='login.php'>Inicia sesión</a></p>";
     } else {
-        $mensaje = "<p style='color: red; font-size:14px;'>❌ Error: " . $conn->error . "</p>";
+        $mensaje = "<p style='color: red; font-size:14px;'>Error: " . $conn->error . "</p>";
     }
 }
 ?>
@@ -78,6 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #0056b3;
         }
 
+
     </style>
 </head>
 <body>
@@ -93,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
          <!-- Mensaje dentro del cuadro -->
          <?= $mensaje ?>
-         
+    
     </form>
 
 </body>
