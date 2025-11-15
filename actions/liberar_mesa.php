@@ -8,9 +8,9 @@ if (isset($_GET['id'])) {
         header("Location: ../pages/inicio.php?msg=Mesa liberada correctamente");
         exit;
     } else {
-        echo "❌ Error al liberar la mesa.";
+        echo " Error al liberar la mesa.";
     }
 } else {
-    echo "❌ No se recibió el ID de la mesa.";
+    echo " No se recibió el ID de la mesa.";
 }
 ?>
