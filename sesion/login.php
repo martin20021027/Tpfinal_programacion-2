@@ -2,6 +2,7 @@
 session_start();
 require_once __DIR__ . "/../config/conexion.php";
 
+// Este if es para que ingrese el usuario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["pass"];
@@ -12,18 +13,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $resultado = $stmt->get_result();
 
+    // Este if verifica que la contraseña sea la misma que la de la base de datos.
     if ($resultado->num_rows === 1) {
         $usuario = $resultado->fetch_assoc();
-
+    // Este if asigna la secion con el con el nombre de usuario que pertenesca.
         if (password_verify($password, $usuario["pass"])) {
             $_SESSION["usuario"] = $usuario["nombre"];
             header("Location: ../pages/inicio.php");
             exit;
         } else {
-            echo "<p style='color:red; text-align:center;'>❌ Contraseña incorrecta.</p>";
+            echo "<p style='color:red; text-align:center;'>Contraseña incorrecta.</p>";
         }
     } else {
-        echo "<p style='color:red; text-align:center;'>❌ Usuario no encontrado.</p>";
+        echo "<p style='color:red; text-align:center;'>Usuario no encontrado.</p>";
     }
 }
 ?>
@@ -101,3 +103,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 </body>
 </html>
+
