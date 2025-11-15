@@ -24,6 +24,15 @@ CREATE TABLE  `usuarios` (
   PRIMARY KEY (`ID_usuario`)
 );
 
+INSERT INTO reserva (estado_mesa, capacidad_mesa, numero_mesa, numero_reserva)
+VALUES
+('Libre', 4, 1, 0),
+('Libre', 2, 2, 0),
+('Libre', 6, 3, 0),
+('Libre', 4, 4, 0),
+('Libre', 8, 5, 0),
+('Libre', 2, 6, 0),
+('Libre', 4, 7, 0);
 
 
 
