@@ -20,14 +20,14 @@ if (isset($_GET['id'])) {
     $resultCheck = $stmtCheck->get_result();
 
     if ($resultCheck->num_rows === 0) {
-        header('Location: ../pages/inicio.php?msg=❌ La mesa no existe.');
+        header('Location: ../pages/inicio.php?msg= La mesa no existe.');
         exit;
     }
 
     $mesa = $resultCheck->fetch_assoc();
 
     if ($mesa['estado_mesa'] !== 'libre') {
-        header('Location: ../pages/inicio.php?msg=❌ Solo se pueden borrar mesas en estado libre.');
+        header('Location: ../pages/inicio.php?msg= Solo se pueden borrar mesas en estado libre.');
         exit;
     }
 
@@ -77,12 +77,12 @@ if (isset($_GET['id'])) {
         // Confirmar transacción
         $conn->commit();
 
-        header('Location: ../pages/inicio.php?msg=✅ Mesa eliminada y números reorganizados.');
+        header('Location: ../pages/inicio.php?msg= Mesa eliminada y números reorganizados.');
         exit;
     } catch (Exception $e) {
         // Revertir transacción en caso de error
         $conn->rollback();
-        header('Location: ../pages/inicio.php?msg=❌ Error al eliminar la mesa: ' . $e->getMessage());
+        header('Location: ../pages/inicio.php?msg= Error al eliminar la mesa: ' . $e->getMessage());
         exit;
     }
 
