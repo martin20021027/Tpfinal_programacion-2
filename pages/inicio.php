@@ -14,10 +14,11 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-require_once __DIR__ . "/../config/base_datos.php";
+require_once __DIR__ . "/../config/conexion.php";
+require_once __DIR__ . "/../Objetos/Mesas.php";
 
-// Obtener todas las mesas
-$result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
+$mesaObj = new Mesa($conn);
+$result = $mesaObj->obtenerMesas();
 
 ?>
 <!DOCTYPE html>
@@ -124,11 +125,11 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
                     <p><?= $row['capacidad_mesa']; ?> personas</p>
              <!-- Este if muestra el estado de la mesa si esta ocupada -->
                     <?php if ($row['estado_mesa'] == 'ocupada'): ?>
-                        <a class="btn-liberar" href="../actions/liberar_mesa.php?id=<?= $row['numero_mesa']; ?>">Liberar</a>
+                        <a class="btn-liberar" href="../actions/mesa_controller.php?action=liberar&id=<?= $row['numero_mesa']; ?>">Liberar</a>
 
             <!-- Este elseif te muestra la opcion de borrar la mesa. -->      
                     <?php elseif ($row['estado_mesa'] == 'libre'): ?>
-                        <a class="btn-borrar" href="../actions/borrar_mesa.php?id=<?= $row['numero_mesa']; ?>" 
+                        <a class="btn-borrar" href="../actions/mesa_controller.php?action=borrar&id=<?= $row['numero_mesa']; ?>" 
                            onclick="return confirm('¿Estás seguro de que deseas borrar esta mesa?');">Borrar</a>
                     <?php endif; ?>
                 </div>
@@ -138,7 +139,7 @@ $result = $conn->query("SELECT * FROM reserva ORDER BY numero_mesa ASC");
              <!-- Este div es para agregar crear una mesa con una capacidad en especifico -->
             <div style="margin-top: 20px; padding: 15px; background: #f9f9f9; border-radius: 8px; border: 1px solid #ddd;">
                 <h3 style="margin-top: 0;">Agregar Nueva Mesa</h3>
-                <form method="post" action="../actions/agregar_mesa.php">
+                <form method="post" action="../actions/mesa_controller.php?action=agregar">
                     <label>Número de Mesa:</label><br>
                     <input type="number" name="numero_mesa" min="1" required><br><br>
 
