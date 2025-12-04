@@ -15,7 +15,7 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 require_once __DIR__ . "/../config/conexion.php";
-require_once __DIR__ . "/../Objetos/Mesas.php";
+require_once __DIR__ . "/../Objetos/Mesa.php";
 
 $mesaObj = new Mesa($conn);
 $result = $mesaObj->obtenerMesas();
@@ -166,3 +166,4 @@ $result = $mesaObj->obtenerMesas();
     </script>
 </body>
 </html>
+
